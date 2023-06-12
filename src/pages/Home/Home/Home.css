@@ -1,0 +1,16 @@
+.search-container {
+    /* display: inline-flex; */
+    position: relative;
+}
+.search-field {
+    width: 320px;
+    height: 30px;
+}
+.search-btn {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    /* padding-bottom: 3px; */
+
+    /* height: 30px; */
+}
