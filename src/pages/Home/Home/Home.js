@@ -9,7 +9,14 @@ const Home = () => {
     useEffect(() => {
         fetch('http://localhost:5000/events')
             .then((res) => res.json())
-            .then((data) => setEvents(data));
+            .then((data) => {
+                if (search) {
+                    const searchedEvent = data.filter((event) => event.name.toLowerCase().includes(search));
+                    setEvents(searchedEvent);
+                } else {
+                    setEvents(data);
+                }
+            });
     }, [search]);
     return (
         <div className="container">
@@ -17,7 +24,7 @@ const Home = () => {
 
             <div className="d-flex justify-content-center">
                 <form className="d-flex justify-content-center search-container" role="search">
-                    <input className="form-control search-field" type="search" placeholder="Search" aria-label="Search" />
+                    <input onChange={(e) => setSearch(e.target.value)} className="form-control search-field" type="search" placeholder="Search" aria-label="Search" />
                     <button className="search-btn bg-primary text-white border border-0 rounded-end-3 px-3" type="submit">
                         <span className="">Search</span>
                     </button>
