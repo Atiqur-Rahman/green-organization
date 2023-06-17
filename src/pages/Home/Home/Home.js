@@ -7,7 +7,7 @@ const Home = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('http://localhost:5000/event')
             .then((res) => res.json())
             .then((data) => {
                 if (search) {

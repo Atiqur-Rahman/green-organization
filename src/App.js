@@ -1,6 +1,11 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AddEvent from './AddEvent/AddEvent';
 import './App.css';
 import Blog from './pages/Blog/Blog';
+import ConfirmationDetail from './pages/ConfirmationDetail/ConfirmationDetail';
 import Donation from './pages/Donation/Donation';
+import EventDetail from './pages/EventDetail/EventDetail';
 import Events from './pages/Events/Events';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
@@ -19,7 +24,11 @@ function App() {
                 <Route path="/blog" element={<Blog></Blog>}></Route>
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
+                <Route path="/addEvent" element={<AddEvent></AddEvent>}></Route>
+                <Route path="/event/:eventId" element={<EventDetail></EventDetail>}></Route>
+                <Route path="/confirmationDetail/:eventId" element={<ConfirmationDetail></ConfirmationDetail>}></Route>
             </Routes>
+            <ToastContainer></ToastContainer>
         </div>
     );
 }
