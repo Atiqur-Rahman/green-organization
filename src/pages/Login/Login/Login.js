@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
@@ -9,7 +9,10 @@ import Loading from '../../shared/Loading/Loading';
 const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    const location = useLocation();
     const { register, handleSubmit } = useForm();
+
+    let from = location.state?.from?.pathname || '/';
 
     if (loading) {
         <Loading></Loading>;
@@ -20,11 +23,10 @@ const Login = () => {
     }
 
     if (user) {
-        navigate('/');
+        navigate(from, { replace: 'true' });
     }
 
     const onSubmit = (data) => {
-        // console.log(data.email);
         signInWithEmailAndPassword(data.email, data.password);
     };
 

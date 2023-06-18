@@ -3,13 +3,16 @@ import { useForm } from 'react-hook-form';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || '/';
 
     if (loading || updating) {
         return <Loading></Loading>;
@@ -22,7 +25,7 @@ const Register = () => {
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        // navigate('/');
+        navigate(from, { replace: 'true' });
     };
 
     if (user) {
@@ -44,8 +47,14 @@ const Register = () => {
                             <br />
                             {/* <input className="mb-3" type="number" name="phone" address placeholder="Phone" {...register('phone')} />
                             <br /> */}
-                            <input className="mb-5 w-100 bg-primary border border-3 border-primary text-white rounded-1" type="submit" value="Register" />
+                            <input className=" w-100 bg-primary border border-3 border-primary text-white rounded-1" type="submit" value="Register" />
                         </form>
+                        <p className="mb-4" style={{ fontSize: '10px' }}>
+                            Already have an account?
+                            <button onClick={() => navigate('/login')} style={{ fontSize: '10px' }} className="btn btn-link ps-1">
+                                Please Login
+                            </button>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
 import Header from './pages/shared/Header/Header';
 import { Route, Routes } from 'react-router-dom';
+import RequireAuth from './pages/Login/RequireAuth/RequireAuth';
 
 function App() {
     return (
@@ -26,7 +27,14 @@ function App() {
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/addEvent" element={<AddEvent></AddEvent>}></Route>
                 <Route path="/event/:eventId" element={<EventDetail></EventDetail>}></Route>
-                <Route path="/confirmationDetail/:eventId" element={<ConfirmationDetail></ConfirmationDetail>}></Route>
+                <Route
+                    path="/confirmationDetail/:eventId"
+                    element={
+                        <RequireAuth>
+                            <ConfirmationDetail></ConfirmationDetail>
+                        </RequireAuth>
+                    }
+                ></Route>
             </Routes>
             <ToastContainer></ToastContainer>
         </div>
