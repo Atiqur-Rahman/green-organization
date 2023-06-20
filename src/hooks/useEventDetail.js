@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 const useEventDetail = (eventId) => {
-    const [event, setEvent] = useState({});
+    const [events, setEvents] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/event/${eventId}`)
             .then((res) => res.json())
-            .then((data) => setEvent(data));
+            .then((data) => setEvents(data));
     }, [eventId]);
-    return [event];
+    return [events];
 };
 
 export default useEventDetail;

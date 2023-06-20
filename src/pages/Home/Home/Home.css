@@ -14,3 +14,12 @@
 
     /* height: 30px; */
 }
+.pagination button {
+    margin-left: 10px;
+    background-color: white;
+    border: 2px solid rgb(7, 117, 227);
+}
+.pagination .selected {
+    background-color: rgb(7, 117, 227);
+    color: white;
+}

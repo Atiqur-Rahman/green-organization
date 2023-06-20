@@ -10,8 +10,9 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
     const location = useLocation();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
+    let errorMessage;
     let from = location.state?.from?.pathname || '/';
 
     if (loading) {
@@ -19,15 +20,20 @@ const Login = () => {
     }
 
     if (error) {
-        console.log(error);
+        errorMessage = (
+            <p className="text-danger" style={{ fontSize: '10px' }}>
+                {error?.message}
+            </p>
+        );
     }
 
     if (user) {
         navigate(from, { replace: 'true' });
     }
 
-    const onSubmit = (data) => {
-        signInWithEmailAndPassword(data.email, data.password);
+    const onSubmit = async (data) => {
+        await signInWithEmailAndPassword(data.email, data.password);
+        reset();
     };
 
     return (
@@ -48,6 +54,7 @@ const Login = () => {
                                     Create an account
                                 </button>
                             </p>
+                            {errorMessage}
                         </form>
                         <SocialLogin></SocialLogin>
                     </div>

@@ -1,6 +1,5 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AddEvent from './AddEvent/AddEvent';
 import './App.css';
 import Blog from './pages/Blog/Blog';
 import ConfirmationDetail from './pages/ConfirmationDetail/ConfirmationDetail';
@@ -13,6 +12,7 @@ import Register from './pages/Login/Register/Register';
 import Header from './pages/shared/Header/Header';
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from './pages/Login/RequireAuth/RequireAuth';
+import AddEvent from './pages/AddEvent/AddEvent';
 
 function App() {
     return (
