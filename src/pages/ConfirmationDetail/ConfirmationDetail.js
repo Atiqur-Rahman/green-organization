@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import React from 'react';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useEventDetail from '../../hooks/useEventDetail';
@@ -53,9 +52,9 @@ const ConfirmationDetail = () => {
                 <br />
                 <input className="mb-2" name="banner" value={events.banner || ''} type="text" />
                 <br />
-                <input className="mb-2" name="address" type="text" />
+                <input className="mb-2" name="address" placeholder="Address" type="text" />
                 <br />
-                <input className="mb-2" name="phone" type="number" />
+                <input className="mb-2" name="phone" placeholder="Contact Number" type="number" />
                 <br />
                 <input className="bg-primary text-white border-primary rounded-1" type="submit" value="Submit" />
             </form>

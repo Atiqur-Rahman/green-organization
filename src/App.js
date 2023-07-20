@@ -13,6 +13,7 @@ import Header from './pages/shared/Header/Header';
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from './pages/Login/RequireAuth/RequireAuth';
 import AddEvent from './pages/AddEvent/AddEvent';
+import NotFound from './pages/shared/NotFound/NotFound';
 
 function App() {
     return (
@@ -22,7 +23,7 @@ function App() {
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/donation" element={<Donation></Donation>}></Route>
                 <Route path="/events" element={<Events></Events>}></Route>
-                <Route path="/blog" element={<Blog></Blog>}></Route>
+                {/* <Route path="/blog" element={<Blog></Blog>}></Route> */}
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/addEvent" element={<AddEvent></AddEvent>}></Route>
@@ -35,6 +36,7 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
+                <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
             <ToastContainer></ToastContainer>
         </div>

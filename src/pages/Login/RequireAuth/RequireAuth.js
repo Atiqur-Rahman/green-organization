@@ -10,7 +10,7 @@ const RequireAuth = ({ children }) => {
     const location = useLocation();
 
     if (loading || sending) {
-        <Loading></Loading>;
+        return <Loading></Loading>;
     }
 
     if (!user) {
@@ -18,7 +18,7 @@ const RequireAuth = ({ children }) => {
     }
     // console.log(user);
 
-    if (user?.providerData[0]?.providerId === 'password' && !user.emailVerified) {
+    if (user.providerData[0]?.providerId === 'password' && !user.emailVerified) {
         return (
             <div className="mt-5">
                 <h4 className="text-danger text-center">Your email is not verified</h4>

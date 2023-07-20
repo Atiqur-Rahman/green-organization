@@ -22,7 +22,7 @@ const AddEvent = () => {
             <div className="d-flex justify-content-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div style={{ position: 'relative' }}>
-                        <div className="d-flex bg-white mt-5 px-5 pt-4 pb-5 border border-1 rounded-2">
+                        <div className="d-md-flex bg-white mt-5 px-5 pt-4 pb-5 border border-1 rounded-2">
                             <div className="me-3">
                                 <label htmlFor="name" style={{ fontSize: '10px' }}>
                                     Event Title

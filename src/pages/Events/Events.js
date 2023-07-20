@@ -32,13 +32,13 @@ const Events = () => {
             <h2 className="text-center mt-4 mb-4">Next Event</h2>
             <div className="row">
                 {volunteerInfo.map((volunteer) => (
-                    <div className="d-flex justify-content-center col-6">
+                    <div className="d-flex justify-content-center col-12 col-md-6 col-lg-6">
                         <div className="card mb-3 bg-white" style={{ width: '300px', height: '100px' }}>
                             <div className="row g-0">
-                                <div className="col-md-4">
+                                <div className="col-4">
                                     <img src={volunteer.banner} className="rounded-start" style={{ height: '99px' }} alt="" />
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-6">
                                     <div className="card-body">
                                         <h5 className="card-title" style={{ fontSize: '16px' }}>
                                             {' '}
@@ -53,7 +53,7 @@ const Events = () => {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="col-md-2">
+                                <div className="col-2">
                                     <button onClick={() => handleDelete(volunteer._id)} className="bg-danger mt-0 me-0 py-1 px-3">
                                         X
                                     </button>

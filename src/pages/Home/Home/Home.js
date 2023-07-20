@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Event from '../Event/Event';
+import Footer from '../../shared/Footer/Footer';
 
 const Home = () => {
     const [events, setEvents] = useState([]);
@@ -56,13 +57,16 @@ const Home = () => {
                         {number + 1}
                     </button>
                 ))}
-                <select className="ms-4" value="8" onChange={(e) => setSize(e.target.value)}>
+                <select className="ms-4" onChange={(e) => setSize(e.target.value)}>
                     <option value="4">4</option>
-                    <option value="8">8</option>
+                    <option value="8" selected>
+                        8
+                    </option>
                     <option value="12">12</option>
                     <option value="16">16</option>
                 </select>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
