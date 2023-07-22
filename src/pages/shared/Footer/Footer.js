@@ -59,26 +59,26 @@ const Footer = () => {
                         <div className="col-md-6 col-lg-6 col-xl-3 mx-auto mt-3">
                             <h5 className="text-uppercase mb-4 font-weight-bold text-success">Contact</h5>
                             <p>
-                                <i className="fas fa-home mr-3"></i> 1234 Somewhere Road, Suite 700, Nashville, TN 00000
+                                <i className="fas fa-home mr-3"></i> 1234 Somewhere Road, Gulshan, Dhaka, Bangladesh
                             </p>
                             <p>
                                 <i className="fas fa-envelope mr-3"></i> rahmanatique88@gmail.com
                             </p>
                             <p>
-                                <i className="fas fa-phone mr-3"></i> +1 5589 55488 55
+                                <i className="fas fa-phone mr-3"></i> +8801705565342
                             </p>
                             <p>
-                                <i className="fas fa-print mr-3"></i> +1 5589 55488 55
+                                <i className="fas fa-print mr-3"></i> +8801705565342
                             </p>
                         </div>
                     </div>
                     <hr className="mb-4" />
                     <div className="row align-items-center">
-                        <div className="col-md-6 col-lg-6">
+                        <div className="col-12 col-md-6 col-lg-6">
                             <p>
                                 Copyright &copy;2023 All rights reserved by:
                                 <a href="#" style={{ textDecoration: 'none' }}>
-                                    <strong className="text-success"> Green Organization</strong>
+                                    <strong className="text-success "> Green Organization</strong>
                                 </a>
                             </p>
                         </div>

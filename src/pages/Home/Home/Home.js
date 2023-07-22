@@ -11,17 +11,7 @@ const Home = () => {
     const [size, setSize] = useState(8);
 
     useEffect(() => {
-        fetch('http://localhost:5000/eventscount')
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log(data.count);
-                const count = Math.ceil(data.count / 8);
-                setPageCount(count);
-            });
-    }, []);
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/event?page=${page}&size=${size}`)
+        fetch(`https://green-organization-server.vercel.app/event?page=${page}&size=${size}`)
             .then((res) => res.json())
             .then((data) => {
                 if (search) {
@@ -30,8 +20,27 @@ const Home = () => {
                 } else {
                     setEvents(data);
                 }
-            });
+            })
+            .catch((error) => console.log(error));
+
+        fetch('https://green-organization-server.vercel.app/eventscount')
+            .then((res) => res.json())
+            .then((data) => {
+                const count = Math.ceil(data.count / 8);
+                setPageCount(count);
+            })
+            .catch((error) => console.log(error));
     }, [search, page, size]);
+
+    /* useEffect(() => {
+        fetch('https://green-organization-server.vercel.app/eventscount')
+            .then((res) => res.json())
+            .then((data) => {
+                const count = Math.ceil(data.count / 8);
+                setPageCount(count);
+            });
+    }, []); */
+
     return (
         <div className="container my-5">
             <h3 className="text-center fw-bolder mt-5">I GROW BY HELPING PEOPLE IN NEED.</h3>

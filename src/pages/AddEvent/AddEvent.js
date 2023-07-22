@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 const AddEvent = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/event', {
+        fetch('https://green-organization-server.vercel.app/event', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

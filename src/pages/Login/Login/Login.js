@@ -2,12 +2,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
+import axios from 'axios';
 
 const Login = () => {
-    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const location = useLocation();
     const { register, handleSubmit, reset } = useForm();
@@ -27,12 +29,23 @@ const Login = () => {
         );
     }
 
-    if (user) {
+    /* if (user) {
         navigate(from, { replace: 'true' });
-    }
+    } */
 
     const onSubmit = async (data) => {
-        await signInWithEmailAndPassword(data.email, data.password);
+        const email = data.email;
+        const password = data.password;
+        await signInWithEmailAndPassword(email, password);
+
+        try {
+            const response = await axios.post('https://green-organization-server.vercel.app/login', { email });
+            localStorage.setItem('accessToken', response?.data?.accessToken);
+        } catch (error) {
+            console.log(error.message);
+        }
+
+        navigate(from, { replace: 'true' });
         reset();
     };
 

@@ -4,9 +4,10 @@ const useEventDetail = (eventId) => {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/event/${eventId}`)
+        fetch(`https://green-organization-server.vercel.app/event/${eventId}`)
             .then((res) => res.json())
-            .then((data) => setEvents(data));
+            .then((data) => setEvents(data))
+            .catch((error) => console.log(error));
     }, [eventId]);
     return [events];
 };
