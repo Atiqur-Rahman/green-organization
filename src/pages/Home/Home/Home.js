@@ -11,35 +11,32 @@ const Home = () => {
     const [size, setSize] = useState(8);
 
     useEffect(() => {
-        fetch(`https://green-organization-server.vercel.app/event?page=${page}&size=${size}`)
-            .then((res) => res.json())
-            .then((data) => {
-                if (search) {
-                    const searchedEvent = data.filter((event) => event.name.toLowerCase().includes(search));
-                    setEvents(searchedEvent);
-                } else {
-                    setEvents(data);
-                }
-            })
-            .catch((error) => console.log(error));
+        const getEvents = async () => {
+            await fetch(`https://green-organization-server.vercel.app/event?page=${page}&size=${size}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (search) {
+                        const searchedEvent = data.filter((event) => event.name.toLowerCase().includes(search));
+                        setEvents(searchedEvent);
+                    } else {
+                        setEvents(data);
+                    }
+                })
+                .catch((error) => console.log(error));
+        };
+        getEvents();
 
-        fetch('https://green-organization-server.vercel.app/eventscount')
-            .then((res) => res.json())
-            .then((data) => {
-                const count = Math.ceil(data.count / 8);
-                setPageCount(count);
-            })
-            .catch((error) => console.log(error));
+        const getPageCount = async () => {
+            await fetch('https://green-organization-server.vercel.app/eventscount')
+                .then((res) => res.json())
+                .then((data) => {
+                    const count = Math.ceil(data.count / 8);
+                    setPageCount(count);
+                })
+                .catch((error) => console.log(error));
+        };
+        getPageCount();
     }, [search, page, size]);
-
-    /* useEffect(() => {
-        fetch('https://green-organization-server.vercel.app/eventscount')
-            .then((res) => res.json())
-            .then((data) => {
-                const count = Math.ceil(data.count / 8);
-                setPageCount(count);
-            });
-    }, []); */
 
     return (
         <div className="container my-5">
