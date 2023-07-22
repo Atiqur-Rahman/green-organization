@@ -25,7 +25,9 @@ const Home = () => {
                 .catch((error) => console.log(error));
         };
         getEvents();
+    }, [search, page, size]);
 
+    useEffect(() => {
         const getPageCount = async () => {
             await fetch('https://green-organization-server.vercel.app/eventscount')
                 .then((res) => res.json())
@@ -36,7 +38,7 @@ const Home = () => {
                 .catch((error) => console.log(error));
         };
         getPageCount();
-    }, [search, page, size]);
+    });
 
     return (
         <div className="container my-5">
