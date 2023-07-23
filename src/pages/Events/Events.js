@@ -30,7 +30,7 @@ const Events = () => {
             }
         };
         getVolunteerInfo();
-    }, [user]);
+    }, [navigate, user]);
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure?');
