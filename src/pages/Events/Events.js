@@ -43,7 +43,6 @@ const Events = () => {
                 .then((data) => {
                     const remaining = volunteerInfo.filter((volunteer) => id !== volunteer._id);
                     setVolunteerInfo(remaining);
-                    console.log(data);
                 });
         }
     };

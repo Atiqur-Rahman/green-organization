@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="container text-center text-md-left">
                     <div className="row text-center text-md-left">
                         <div className="col-md-6 col-lg-6 col-xl-3 mx-auto mt-3">
-                            <h5 className="text-uppercase mb-3 font-weight-bold text-success">Organization</h5>
+                            <h5 className="text-uppercase mb-3 fw-bold text-success">Organization</h5>
                             <p>Advertise with us</p>
                         </div>
                         {/* <div className="col-md-3 col-lg-3 col-xl-2 mx-auto mt-3">
@@ -57,7 +57,7 @@ const Footer = () => {
                             </p>
                         </div> */}
                         <div className="col-md-6 col-lg-6 col-xl-3 mx-auto mt-3">
-                            <h5 className="text-uppercase mb-3 font-weight-bold text-success">Contact</h5>
+                            <h5 className="text-uppercase mb-3 fw-bold text-success">Contact</h5>
                             <p>
                                 <i className="fas fa-home mr-3"></i> 1234 Somewhere Road, Gulshan, Dhaka, Bangladesh
                             </p>
@@ -78,7 +78,7 @@ const Footer = () => {
                             <p>
                                 Copyright &copy;2023 All rights reserved by:
                                 <a href="#" style={{ textDecoration: 'none' }}>
-                                    <strong className="text-success "> Green Organization</strong>
+                                    <strong className="text-success fw-bold"> Green Organization</strong>
                                 </a>
                             </p>
                         </div>

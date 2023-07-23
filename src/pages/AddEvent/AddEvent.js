@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddEvent = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -12,9 +13,14 @@ const AddEvent = () => {
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((result) => console.log(result));
+            .then((result) => {
+                if (result.insertedId) {
+                    toast('New Event is added to the Home page!!');
+                    reset();
+                }
+            });
 
-        reset();
+        // reset();
     };
 
     return (
@@ -32,7 +38,11 @@ const AddEvent = () => {
                             </div>
                             <div>
                                 <label htmlFor="banner" style={{ fontSize: '10px' }}>
-                                    Banner
+                                    Banner(
+                                    <span className="text-secondary" style={{ fontSize: '9px' }}>
+                                        Please use ImgBB direct links
+                                    </span>
+                                    )
                                 </label>
                                 <br />
                                 <input style={{ border: '1px solid gray', borderRadius: '4px' }} type="text" name="banner" {...register('banner', { required: true })} />

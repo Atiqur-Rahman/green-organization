@@ -22,11 +22,25 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/donation" element={<Donation></Donation>}></Route>
-                <Route path="/events" element={<Events></Events>}></Route>
+                <Route
+                    path="/events"
+                    element={
+                        <RequireAuth>
+                            <Events></Events>
+                        </RequireAuth>
+                    }
+                ></Route>
                 {/* <Route path="/blog" element={<Blog></Blog>}></Route> */}
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
-                <Route path="/addEvent" element={<AddEvent></AddEvent>}></Route>
+                <Route
+                    path="/addEvent"
+                    element={
+                        <RequireAuth>
+                            <AddEvent></AddEvent>
+                        </RequireAuth>
+                    }
+                ></Route>
                 <Route path="/event/:eventId" element={<EventDetail></EventDetail>}></Route>
                 <Route
                     path="/confirmationDetail/:eventId"
