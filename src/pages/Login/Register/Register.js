@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
@@ -23,8 +24,15 @@ const Register = () => {
     }
 
     const onSubmit = async (data) => {
+        const email = data.email;
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
+        try {
+            const response = await axios.post('https://green-organization-server.vercel.app/login', { email });
+            localStorage.setItem('accessToken', response?.data?.accessToken);
+        } catch (error) {
+            console.log(error.message);
+        }
         navigate(from, { replace: 'true' });
     };
 

@@ -3,11 +3,11 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <footer className=" text-white pt-5 pb-4 mt-5 rounded" style={{ backgroundColor: 'navy' }}>
+            <footer className=" text-white pt-3 mt-5 rounded" style={{ backgroundColor: 'navy' }}>
                 <div className="container text-center text-md-left">
                     <div className="row text-center text-md-left">
                         <div className="col-md-6 col-lg-6 col-xl-3 mx-auto mt-3">
-                            <h5 className="text-uppercase mb-4 font-weight-bold text-success">Organization</h5>
+                            <h5 className="text-uppercase mb-3 font-weight-bold text-success">Organization</h5>
                             <p>Advertise with us</p>
                         </div>
                         {/* <div className="col-md-3 col-lg-3 col-xl-2 mx-auto mt-3">
@@ -57,7 +57,7 @@ const Footer = () => {
                             </p>
                         </div> */}
                         <div className="col-md-6 col-lg-6 col-xl-3 mx-auto mt-3">
-                            <h5 className="text-uppercase mb-4 font-weight-bold text-success">Contact</h5>
+                            <h5 className="text-uppercase mb-3 font-weight-bold text-success">Contact</h5>
                             <p>
                                 <i className="fas fa-home mr-3"></i> 1234 Somewhere Road, Gulshan, Dhaka, Bangladesh
                             </p>
@@ -72,7 +72,7 @@ const Footer = () => {
                             </p>
                         </div>
                     </div>
-                    <hr className="mb-4" />
+                    <hr className="mb-3" />
                     <div className="row align-items-center">
                         <div className="col-12 col-md-6 col-lg-6">
                             <p>

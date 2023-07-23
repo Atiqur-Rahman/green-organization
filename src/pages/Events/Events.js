@@ -34,7 +34,6 @@ const Events = () => {
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure?');
-        console.log(id);
 
         if (proceed) {
             fetch(`https://green-organization-server.vercel.app/volunteer/${id}`, {
