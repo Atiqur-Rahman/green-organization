@@ -41,9 +41,6 @@ const Header = () => {
                         <Nav.Link as={Link} to="/addEvent">
                             AddEvent
                         </Nav.Link>
-                        {/* <Nav.Link as={Link} to="/blog">
-                            Blog
-                        </Nav.Link> */}
                         {user ? (
                             <>
                                 <p className="mt-3 ms-5 text-primary">{user.displayName ? user.displayName : 'anonymous'}</p>

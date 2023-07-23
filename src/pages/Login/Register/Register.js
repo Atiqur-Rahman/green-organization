@@ -53,8 +53,6 @@ const Register = () => {
                             <br />
                             <input className="mb-3" type="password" name="password" placeholder="Password" {...register('password', { required: true })} />
                             <br />
-                            {/* <input className="mb-3" type="number" name="phone" address placeholder="Phone" {...register('phone')} />
-                            <br /> */}
                             <input className=" w-100 bg-primary border border-3 border-primary text-white rounded-1" type="submit" value="Register" />
                         </form>
                         <p className="mb-4" style={{ fontSize: '10px' }}>

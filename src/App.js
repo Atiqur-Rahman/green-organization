@@ -1,7 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import Blog from './pages/Blog/Blog';
 import ConfirmationDetail from './pages/ConfirmationDetail/ConfirmationDetail';
 import Donation from './pages/Donation/Donation';
 import EventDetail from './pages/EventDetail/EventDetail';
@@ -30,7 +29,6 @@ function App() {
                         </RequireAuth>
                     }
                 ></Route>
-                {/* <Route path="/blog" element={<Blog></Blog>}></Route> */}
                 <Route path="/register" element={<Register></Register>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route

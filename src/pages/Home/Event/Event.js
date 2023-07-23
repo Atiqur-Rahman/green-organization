@@ -7,7 +7,6 @@ const Event = ({ event }) => {
     const getRandomColor = () => {
         const bgColor = ['Tomato', 'Orange', 'DodgerBlue', 'SlateBlue'];
         let color = bgColor[Math.floor(Math.random() * bgColor.length)];
-        // console.log(color);
         return color;
     };
     return (
