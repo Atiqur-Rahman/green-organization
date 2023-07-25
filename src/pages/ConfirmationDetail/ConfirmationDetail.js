@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useEventDetail from '../../hooks/useEventDetail';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loading from '../shared/Loading/Loading';
 
 const ConfirmationDetail = () => {
     const { eventId } = useParams();
     const [user] = useAuthState(auth);
     const [events] = useEventDetail(eventId);
     const navigate = useNavigate();
+    const [spinner, setSpinner] = useState(false);
+
+    if (spinner) {
+        return <Loading></Loading>;
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,6 +29,7 @@ const ConfirmationDetail = () => {
             phone: event.target.phone.value,
         };
 
+        setSpinner(true);
         fetch('https://green-organization-server.vercel.app/volunteer', {
             method: 'POST',
             headers: {
@@ -36,7 +43,9 @@ const ConfirmationDetail = () => {
                     toast('You are selected as volunteer for this event!!');
                     event.target.reset();
                 }
+                setSpinner(false);
             });
+
         navigate('/');
         /* axios.post('https://green-organization-server.vercel.app/volunteer', volunteerInfo).then((response) => {
             if (response.data.insertedId) {

@@ -4,22 +4,26 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import Loading from '../shared/Loading/Loading';
 
 const Events = () => {
     const [user] = useAuthState(auth);
     const [volunteerInfo, setVolunteerInfo] = useState([]);
     const navigate = useNavigate();
+    const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
         const getVolunteerInfo = async () => {
             const email = user?.email;
             const url = `https://green-organization-server.vercel.app/volunteer?email=${email}`;
+            setSpinner(true);
             try {
                 const { data } = await axios.get(url, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                     },
                 });
+                setSpinner(false);
                 setVolunteerInfo(data);
             } catch (error) {
                 console.log(error.message);
@@ -46,6 +50,11 @@ const Events = () => {
                 });
         }
     };
+
+    if (spinner) {
+        return <Loading></Loading>;
+    }
+
     return (
         <div className="container">
             <h2 className="text-center mt-4 mb-4">Next Event</h2>

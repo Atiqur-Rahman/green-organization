@@ -13,30 +13,38 @@ const Home = () => {
     const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
-        fetch('https://green-organization-server.vercel.app/eventscount')
-            .then((res) => res.json())
-            .then((data) => {
-                const count = Math.ceil(data.count / 8);
-                setPageCount(count);
-            })
-            .catch((error) => console.log(error));
-    });
+        const getEvents = async () => {
+            setSpinner(true);
+            await fetch(`https://green-organization-server.vercel.app/event?page=${page}&size=${size}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (search) {
+                        const searchedEvent = data.filter((event) => event.name.toLowerCase().includes(search));
+                        setEvents(searchedEvent);
+                    } else {
+                        setEvents(data);
+                    }
+                    setSpinner(false);
+                })
+                .catch((error) => console.log(error));
+        };
+        getEvents();
+    }, [search, page, size]);
 
     useEffect(() => {
         setSpinner(true);
-        fetch(`https://green-organization-server.vercel.app/event?page=${page}&size=${size}`)
-            .then((res) => res.json())
-            .then((data) => {
-                if (search) {
-                    const searchedEvent = data.filter((event) => event.name.toLowerCase().includes(search));
-                    setEvents(searchedEvent);
-                } else {
-                    setEvents(data);
-                }
-                setSpinner(false);
-            })
-            .catch((error) => console.log(error));
-    }, [search, page, size]);
+        const getPageCount = async () => {
+            await fetch('https://green-organization-server.vercel.app/eventscount')
+                .then((res) => res.json())
+                .then((data) => {
+                    const count = Math.ceil(data.count / 8);
+                    setPageCount(count);
+                    setSpinner(false);
+                })
+                .catch((error) => console.log(error));
+        };
+        getPageCount();
+    }, []);
 
     if (spinner) {
         return <Loading></Loading>;
@@ -69,7 +77,9 @@ const Home = () => {
                 ))}
                 <select className="ms-4" onChange={(e) => setSize(e.target.value)}>
                     <option value="4">4</option>
-                    <option value="8">8</option>
+                    <option value="8" selected="selected">
+                        8
+                    </option>
                     <option value="12">12</option>
                     <option value="16">16</option>
                 </select>
