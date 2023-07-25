@@ -17,7 +17,10 @@ const Home = () => {
             setSpinner(true);
             await fetch(`https://green-organization-server.vercel.app/event?page=${page}&size=${size}`)
                 .then((res) => res.json())
-                .then((data) => {
+                .then(({ data, count }) => {
+                    // console.log(data, count);
+                    const cont = Math.ceil(count / 8);
+                    setPageCount(cont);
                     if (search) {
                         const searchedEvent = data.filter((event) => event.name.toLowerCase().includes(search));
                         setEvents(searchedEvent);
@@ -31,20 +34,18 @@ const Home = () => {
         getEvents();
     }, [search, page, size]);
 
-    useEffect(() => {
-        setSpinner(true);
+    /* useEffect(() => {
         const getPageCount = async () => {
             await fetch('https://green-organization-server.vercel.app/eventscount')
                 .then((res) => res.json())
                 .then((data) => {
                     const count = Math.ceil(data.count / 8);
                     setPageCount(count);
-                    setSpinner(false);
                 })
                 .catch((error) => console.log(error));
         };
         getPageCount();
-    }, []);
+    }, []); */
 
     if (spinner) {
         return <Loading></Loading>;
@@ -75,11 +76,9 @@ const Home = () => {
                         {number + 1}
                     </button>
                 ))}
-                <select className="ms-4" onChange={(e) => setSize(e.target.value)}>
+                <select className="ms-4" defaultValue={size} onChange={(e) => setSize(e.target.value)}>
                     <option value="4">4</option>
-                    <option value="8" selected="selected">
-                        8
-                    </option>
+                    <option value="8">8</option>
                     <option value="12">12</option>
                     <option value="16">16</option>
                 </select>
