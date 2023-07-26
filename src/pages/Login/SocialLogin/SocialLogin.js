@@ -25,7 +25,7 @@ const SocialLogin = () => {
     if (user) {
         const email = user?.email;
         axios
-            .post('https://green-organization-server.vercel.app/login', { email })
+            .post('https://green-organization-server2-production.up.railway.app/login', { email })
             .then(({ data }) => {
                 localStorage.setItem('accessToken', data.accessToken);
             })

@@ -28,7 +28,7 @@ const Register = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         try {
-            const response = await axios.post('https://green-organization-server.vercel.app/login', { email });
+            const response = await axios.post('https://green-organization-server2-production.up.railway.app/login', { email });
             localStorage.setItem('accessToken', response?.data?.accessToken);
         } catch (error) {
             console.log(error.message);

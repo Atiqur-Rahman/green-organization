@@ -15,7 +15,7 @@ const Events = () => {
     useEffect(() => {
         const getVolunteerInfo = async () => {
             const email = user?.email;
-            const url = `https://green-organization-server.vercel.app/volunteer?email=${email}`;
+            const url = `https://green-organization-server2-production.up.railway.app/volunteer?email=${email}`;
             setSpinner(true);
             try {
                 const { data } = await axios.get(url, {
@@ -40,7 +40,7 @@ const Events = () => {
         const proceed = window.confirm('Are you sure?');
 
         if (proceed) {
-            fetch(`https://green-organization-server.vercel.app/volunteer/${id}`, {
+            fetch(`https://green-organization-server2-production.up.railway.app/volunteer/${id}`, {
                 method: 'DELETE',
             })
                 .then((res) => res.json())

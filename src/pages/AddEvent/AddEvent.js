@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const AddEvent = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
-        fetch('https://green-organization-server.vercel.app/event', {
+        fetch('https://green-organization-server2-production.up.railway.app/event', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

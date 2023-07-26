@@ -30,7 +30,7 @@ const ConfirmationDetail = () => {
         };
 
         setSpinner(true);
-        fetch('https://green-organization-server.vercel.app/volunteer', {
+        fetch('https://green-organization-server2-production.up.railway.app/volunteer', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -47,7 +47,7 @@ const ConfirmationDetail = () => {
             });
 
         navigate('/');
-        /* axios.post('https://green-organization-server.vercel.app/volunteer', volunteerInfo).then((response) => {
+        /* axios.post('https://green-organization-server2-production.up.railway.app/volunteer', volunteerInfo).then((response) => {
             if (response.data.insertedId) {
                 toast('You are selected as volunteer for this event!!');
                 event.target.reset();

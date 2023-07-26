@@ -5,7 +5,7 @@ const useEventDetail = (eventId) => {
 
     useEffect(() => {
         const getEvents = async () => {
-            fetch(`https://green-organization-server.vercel.app/event/${eventId}`)
+            fetch(`https://green-organization-server2-production.up.railway.app/event/${eventId}`)
                 .then((res) => res.json())
                 .then((data) => setEvents(data))
                 .catch((error) => console.log(error));
