@@ -40,7 +40,7 @@ const ConfirmationDetail = () => {
             .then((res) => res.json())
             .then((result) => {
                 if (result.insertedId) {
-                    toast('You are selected as volunteer for this event!!');
+                    toast(`You have selected the "${events.name}" event as a volunteer!!`);
                     event.target.reset();
                 }
                 setSpinner(false);
